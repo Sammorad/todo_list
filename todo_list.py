@@ -39,6 +39,7 @@ def view_item():
         if item in todo_list[i]:
             print(f"The task for {item} is {todo_list[i][item]}")
 def list_management():
+    """main function to run the todo app"""
     print("Welcome to your to do list")
     print("To create a new list input 'c' ")
     print("To modify an item in your list, input'm' ")
