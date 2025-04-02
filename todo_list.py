@@ -1,10 +1,8 @@
-filename = "C:/Users/hp/python_practise.txt"
 todo_list = []
 def create_list ():
     """this module help us create a to do list"""
     number_of_task = int(input("how many task do you want to enter: "))
     i= 0
-    
     while i < number_of_task:
         time01 = input("Enter time in format(hhmm): ")
         task = input("Enter task: ")
