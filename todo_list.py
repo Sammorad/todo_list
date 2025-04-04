@@ -1,3 +1,4 @@
+from datetime import datetime  
 todo_list = []
 def create_list ():
     """this module help us create a to do list"""
@@ -5,39 +6,47 @@ def create_list ():
     i= 0
     while i < number_of_task:
         time01 = input("Enter time in format(hhmm): ")
+        time01 = datetime.strptime(time01, "%H%M")
+        orig_time = time01.strftime("%H:%M")
         task = input("Enter task: ")
-        todo_list.append({time01: task})
+        todo_list.append({orig_time : task})
         i += 1
     else:
         action = input("Enter required action or 'q' to quit")
-    print(todo_list)
+    print(f"Here is a your list {todo_list}")
 
     
 
 def delete_item():
     """this option deletes unwanted items from our list"""
     key = input("what time will should i delete: ")
+    time01 = datetime.strptime(key, "%H%M")
+    orig_time = time01.strftime("%H:%M")
     for i in range(0, len(todo_list)):
-        if key in todo_list[i].keys():
+        if orig_time in todo_list[i].keys():
             del todo_list[i]
             break
-    print(todo_list)
+    print(f"You deleted {orig_time}, here is your new list {todo_list}")
 
 def modify_item():
     """modify items in our list"""
     key = input("which item will you modify: ")
+    time01 = datetime.strptime(key, "%H%M")
+    orig_time = time01.strftime("%H:%M")
     new_task= input("what is the ney task: ")
     for i in range(0, len(todo_list)):
-        if key in todo_list[i].keys():
-            todo_list[i][key] = new_task   
-    print(todo_list)
+        if orig_time in todo_list[i].keys():
+            todo_list[i][orig_time] = new_task   
+    print(f"the task {orig_time} is changed to {todo_list[i][orig_time]} ")
 
 def view_item():
     """we will view items in our to do list """
-    item = input("which item do you want to view: ")
+    key = input("which item do you want to view: ")
+    time01 = datetime.strptime(key, "%H%M")
+    orig_time = time01.strftime("%H:%M")
     for i in range (0, len(todo_list)):
-        if item in todo_list[i]:
-            print(f"The task for {item} is {todo_list[i][item]}")
+        if orig_time in todo_list[i]:
+            print(f"The task for {orig_time} is {todo_list[i][orig_time]}")
 def list_management():
     """main function to run the todo app"""
     print("Welcome to your to do list")
