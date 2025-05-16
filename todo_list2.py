@@ -51,6 +51,9 @@ def create_list():
     print("Your list is:")
     for time, task in todo_list.items():
         print(f"Time: {time}, Task: {task}")
+    return todo_list
+
+        
 
 def delete_item():
     """Removes a specified item from the list"""
@@ -62,8 +65,10 @@ def delete_item():
         print(f"You deleted the task at {key}. Here is your new list:")
         for time, task in todo_list.items():
             print(f"Time: {time}, Task: {task}")
+        return todo_list
     else:
         print("Item not found")
+        return "item not found"
 
 def modify_item():
     """Modifies an item in the list"""
@@ -75,19 +80,25 @@ def modify_item():
             todo_list[key] = new_task
             save_todo_list(todo_list)
             print(f"The task at {key} is changed to {new_task}")
+            return todo_list
         else:
             print("New task cannot be empty.")
+            return "New task cannot be empty"
     else:
         print("Item not found")
+        return "item not found"
 
 def view_item():
     """View an item in the list"""
     todo_list = load_todo_list()
     key = get_valid_time()
     if key in todo_list:
-        print(f"The task for {key} is {todo_list[key]}")
+        task = f"The task for {key} is {todo_list[key]}"
+        print(task)
+        return {key: task}
     else:
         print("Item not found")
+        return None
 
 def main():
     """Main function to initialize and manage the to-do application workflow."""
